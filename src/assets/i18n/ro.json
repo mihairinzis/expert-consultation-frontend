@@ -1,0 +1,278 @@
+{
+  "field": {
+    "label": {
+      "email": "Email"
+    },
+    "error": {
+      "required": "Câmp obligatoriu.",
+      "shouldMatch": "Parolele trebuie să se potrivească.",
+      "pattern": "Număr de telefon invalid",
+      "phoneNumber": "Număr de telefon incorect.",
+      "email": "Adresa de mail este incorectă."
+    }
+  },
+  "organization": {
+    "breadcrumb": {
+      "list": "Mangement organizații",
+      "detail": "Detaill organizație",
+      "new": "Adaugă organizație"
+    }
+  },
+  "validation.Resource.not.found": "Resursa nu a fost găsită.",
+  "register": {
+    "form": {
+      "fullName": "Nume complet",
+      "username": "Nume utilizator",
+      "password": "Parolă",
+      "confirmPassword": "Confirmă Parolă"
+    },
+    "createButton": "Finalizează înregistrarea",
+    "header": "Înregistrează cont nou",
+    "toLoginMessage": "Ai deja cont?",
+    "toLoginAction": "Conecteză-te",
+    "Success": "Utilizatorul a fost înregistrat cu succes.",
+    "Duplicate.username": "Numele de utilizator este deja folosit.",
+    "Duplicate.email": "Adresa de mail este deja folosită."
+  },
+  "comments": {
+    "placeholder": "Scrie comentariul tău aici",
+    "all": "Toate comentariile",
+    "answer": "Răspunde acestui comentariu",
+    "number": {
+      "plural": "comentarii",
+      "singular": "comentariu"
+    }
+  },
+  "votes": {
+    "voteUp": "pro",
+    "voteDown": "contra"
+  },
+  "login": {
+    "welcome": "Bine ai venit",
+    "enterAccount": "Intră în cont",
+    "placeholder": {
+      "email": "Email sau nume utilizator",
+      "password": "Parolă"
+    },
+    "forgotPassword": "Ai uitat parola?",
+    "createAccount": "Creează cont nou",
+    "doLogin": "Login",
+    "Bad.credentials": "Numele de utilizator, mailul sau parola nu sunt corecte.",
+    "UsernameOrEmail.not.empty": "Numele de utilizator sau mailul este obligatoriu.",
+    "Password.not.empty": "Parola este obligatorie."
+  },
+  "button": {
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "confirm": "Confirmă",
+    "add-comment": "Adaugă un comentariu",
+    "save-comment": "Comentează"
+  },
+  "search": {
+    "label": "Caută"
+  },
+  "documents": {
+    "add": {
+      "title": "Adaugă document"
+    },
+    "consultation": {
+      "time": "Perioadă consultare",
+      "startDate": "dată început",
+      "deadline": "deadline consultare",
+      "excluded": "Nu intră in consultare",
+      "add": {
+        "title": "Adaugă deadline"
+      }
+    },
+    "table": {
+      "title": "Documente",
+      "type": "documente",
+      "sort": {
+        "year": "An",
+        "type": "Tip document",
+        "initiator": "Inițiator",
+        "status": "Stare"
+      },
+      "column": {
+        "name": "Nume document",
+        "date": "Data publicării",
+        "type": "Tip document",
+        "initiator": "Inițiator"
+      }
+    }
+  },
+  "users": {
+    "table": {
+      "title": "Membri",
+      "column": {
+        "firstName": "Prenume",
+        "lastName": "Nume",
+        "email": "Email",
+        "phoneNumber": "Telefon",
+        "district": "Județ",
+        "organisation": "Organizație",
+        "specialization": "Specializare"
+      }
+    },
+    "card": {
+      "viewProfile": "Vezi profil"
+    },
+    "add": {
+      "title": "Adaugă membri",
+      "manual": "Manual",
+      "subTitle": "Vrei să adaugi membri individual?",
+      "subTitle.single": "Adaugă un membru nou.",
+      "fromCsv": "Importă un fișier .csv",
+      "fromExcel": "Copy/paste dintr-un document excel",
+      "excel": "Copiază în chenarul de mai jos"
+    },
+    "header": {
+      "button": {
+        "add": "Adaugă membri"
+      }
+    },
+    "form": {
+      "title": "Adaugă membru"
+    }
+  },
+  "user": {
+    "invitation": {
+      "invalid": "Cod invitație invalid"
+    },
+    "form": {
+      "header": "Adaugă membru nou"
+    },
+    "save": {
+      "duplicatedEmail": "Adresa de email este deja folosită."
+    }
+  },
+  "fileUpload": {
+    "label": {
+      "Choose.file": "Alege fișier",
+      "Uploading": "În curs de încărcare...",
+      "Uploaded.successfully": "Fișier încărcat cu succes!",
+      "Cancel.upload": "Renunță la încarcare",
+      "Error": "Eroare"
+    }
+  },
+  "documentNode": {
+    "form": {
+      "title": "Titlu",
+      "identifier": "Identificator",
+      "content": "Conținut"
+    }
+  },
+  "document": {
+    "members": {
+      "add": "Adaugă membri"
+    },
+    "edit": {
+      "button": {
+        "begin": "Editează",
+        "end": "Ascunde Editare"
+      },
+      "header": "Editează",
+      "section": "secțiunea",
+      "chapter": "capitolul",
+      "article": "articolul",
+      "paragraph": "paragraful",
+      "alignment": "aliniatul",
+      "document": "documentul"
+    },
+    "header": "Adaugă document nou",
+    "details": {
+      "header": "Detalii document"
+    },
+    "add": {
+      "title": "Titlu document",
+      "number": "Numărul documentului",
+      "initiator": "Inițiator",
+      "type": {
+        "name": "Tip document",
+        "OUG": "Ordonanță de urgență",
+        "HG": "Hotărâre de guvern",
+        "LEGE": "Lege"
+      },
+      "release": "Data eliberării",
+      "receiving": "Data primirii",
+      "file": "Încarcă documentul"
+    },
+    "view": {
+      "name": "Nume document",
+      "initiator": "Inițiator",
+      "date": "Data elaborării",
+      "type": "Tip document",
+      "status": "Status",
+      "download": "Descarcă document",
+      "search": "Caută în document",
+      "section": {
+        "type": {
+          "document": "Document",
+          "chapter": "Capitolul",
+          "section": "Secțiunea",
+          "article": "Art."
+        }
+      }
+    },
+    "metadata": {
+      "initiator": "Inițiator",
+      "dateOfDevelopment": "Data elaborarii",
+      "type": "Tip document",
+      "status": "Status",
+      "assignedUsers": "Comisie"
+    },
+    "users": {
+      "table": {
+        "firstName": "Prenume",
+        "lastName": "Name",
+        "organisation": "Organizație",
+        "search": "Caută un membru după nume, specializare sau organizație",
+        "add": "Adaugă la comisie",
+        "assign": "Asignează",
+        "unassign": "Revocă"
+      },
+      "view": "Vezi document",
+      "save": "Salvează"
+    }
+  },
+  "table": {
+    "sort": {
+      "title": "Sortează după"
+    }
+  },
+  "header": {
+    "profile": "Profil",
+    "login": "Log in",
+    "logout": "Deconectare",
+    "about": "Despre",
+    "consultation": "In consultare",
+    "archive": "Arhiva",
+    "members": "Membri"
+  },
+  "sideNav": {
+    "dashboard": "Dashboard",
+    "addDocument": "Adaugă document nou",
+    "documentArchive": "Arhivă documente",
+    "userManagement": "Management utilizatori",
+    "dictionary": "Dicționar",
+    "settings": "Setări"
+  },
+  "topNav": {
+    "logout": "Deconectare"
+  },
+  "dashboard": {
+    "pendingComments": {
+      "title": "Comentarii care necesită aprobare",
+      "table": {
+        "content": "Conținut",
+        "author": "Autor",
+        "documentTitle": "Titlul documentului",
+        "nodeTitle": "Titlul nodului",
+        "nodeContent": "Conținutul nodului"
+      },
+      "approve": "Acceptă",
+      "reject": "Respinge",
+      "none": "Nu aveți comentarii pentru aprobare"
+    }
+  }
+}

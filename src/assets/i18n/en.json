@@ -1,0 +1,178 @@
+{
+  "field": {
+    "label": {
+      "email": "Email"
+    },
+    "error": {
+      "required": "Mandatory field.",
+      "shouldMatch": "Passwords must match.",
+      "pattern": "Invalid phone number",
+      "phoneNumber": "Invalid phone number.",
+      "email": "Invalid email."
+    }
+  },
+  "validation.Resource.not.found": "Resource was not found.",
+  "register": {
+    "form": {
+      "fullName": "Full name",
+      "username": "Username",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "createButton": "Sign up",
+    "header": "Sign up for a new account",
+    "toLoginMessage": "Sign in?",
+    "toLoginAction": "Connect",
+    "Success": "User registered successfully.",
+    "Duplicate.username": "The username is already used.",
+    "Duplicate.email": "The email is already used."
+  },
+  "comments": {
+    "placeholder": "Write your comment here",
+    "all": "All comments",
+    "answer": "Answer this comment",
+    "number": {
+      "plural": "comments",
+      "singular": "comment"
+    }
+  },
+  "votes": {
+    "voteUp": "pro",
+    "voteDown": "against"
+  },
+  "login": {
+    "label": {
+      "Username.or.email": "Username or email",
+      "Password": "Password"
+    },
+    "Bad.credentials": "The specified username, email or password are not correct.",
+    "UsernameOrEmail.not.empty": "Username or email is mandatory",
+    "Password.not.empty": "Password is mandatory."
+  },
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "search": {
+    "label": "Search"
+  },
+  "documents": {
+    "add": {
+      "title": "Add a document"
+    },
+    "consultation": {
+      "time": "Consultation period",
+      "startDate": "starting date",
+      "deadline": "deadline",
+      "excluded": "Not included in consultation",
+      "add": {
+        "title": "Add deadline"
+      }
+    },
+    "table": {
+      "type": "documents",
+      "sort": {
+        "year": "Year",
+        "type": "Document type",
+        "initiator": "Initiator",
+        "status": "Status"
+      },
+      "column": {
+        "name": "Document Name",
+        "date": "Publish Date",
+        "type": "Document Type",
+        "initiator": "Initiator"
+      }
+    }
+  },
+  "users": {
+    "table": {
+      "column": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email",
+        "phoneNumber": "Phone number",
+        "district": "District",
+        "organisation": "Organisation",
+        "specialization": "Specialization"
+      }
+    },
+    "card": {
+      "viewProfile": "View profile"
+    },
+    "add": {
+      "title": "Add members",
+      "subTitle": "Do you want to add an individual member?",
+      "subTitle.single": "Add new member.",
+      "fromCsv": "Import .csv file",
+      "fromExcel": "Copy/paste from excel document",
+      "excel": "Paste in the box below"
+    },
+    "header": {
+      "button": {
+        "add": "Add members"
+      }
+    },
+    "form": {
+      "title": "Add member"
+    }
+  },
+  "user": {
+    "save": {
+      "duplicatedEmail": "Email already in use."
+    }
+  },
+  "fileUpload": {
+    "label": {
+      "Choose.file": "Choose file",
+      "Uploading": "Uploading...",
+      "Uploaded.successfully": "Uploaded successfully!",
+      "Cancel.upload": "Cancel upload",
+      "Error": "Error"
+    }
+  },
+  "document": {
+    "add": {
+      "title": "Document title",
+      "number": "Document number",
+      "initiator": "Initiator",
+      "type": {
+        "name": "Document type",
+        "OUG": "Emergency Ordinance",
+        "HG": "Government Decision",
+        "LEGE": "Law"
+      },
+      "release": "Release date",
+      "receiving": "Receive date",
+      "file": "Upload file"
+    },
+    "edit": {
+      "button": {
+        "begin": "Edit",
+        "end": "Disable edit mode"
+      }
+    }
+  },
+  "table": {
+    "sort": {
+      "title": "Sort by"
+    }
+  },
+  "header": {
+    "profile": "Profile",
+    "login": "Log in",
+    "logout": "Log out",
+    "about": "About",
+    "consultation": "Consultation",
+    "archive": "Archive",
+    "members": "Members"
+  },
+  "dashboard": {
+    "pendingComments": {
+      "documentTitle": "Document title",
+      "nodeTitle": "Node title",
+      "nodeContent": "Node content"
+    }
+  }
+}

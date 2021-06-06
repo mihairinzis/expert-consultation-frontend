@@ -1,0 +1,10 @@
+<ec-page>
+  <ec-form *ngIf="data$ | async as data"
+           (save)="saveOrganization()"
+           (discard)="resetForm(data.organization)">
+    <form [formGroup]="form">
+      <ec-form-field [abstractControl]="form.controls.name" controlType="text" label="field.label.name"></ec-form-field>
+      <ec-form-field [abstractControl]="form.controls.email" controlType="email" label="field.label.email"></ec-form-field>
+    </form>
+  </ec-form>
+</ec-page>

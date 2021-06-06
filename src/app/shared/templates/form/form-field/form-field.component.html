@@ -1,0 +1,40 @@
+<ng-container [ngSwitch]="controlType">
+  <div class="mb-4 text-gray-700">
+    <label class="block mb-1" *ngIf="label">{{label | translate}}</label>
+
+    <ng-container *ngSwitchDefault>
+      <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+             [class.border-red-700]="!!control.errors"
+             [type]="controlType"
+             [formControl]="control">
+    </ng-container>
+
+    <ng-container *ngIf="control.errors"
+                  [ngTemplateOutlet]="errors"
+                  [ngTemplateOutletContext]="{$implicit: control.errors}">
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-template #errors let-errors>
+  <div class="text-xs text-red-700"
+       *ngFor="let error of errors | keyvalue">
+    <ng-container [ngSwitch]="error?.key">
+      <ng-container *ngSwitchCase="'maxlength'">
+        {{errorMessage(error.key)?.i18nKey || 'field.error.maxlength' | translate : error.value}}
+      </ng-container>
+      <ng-container *ngSwitchCase="'minlength'">
+        {{errorMessage(error.key)?.i18nKey || 'field.error.minlength' | translate : error.value}}
+      </ng-container>
+      <ng-container *ngSwitchCase="'required'">
+        {{errorMessage(error.key)?.i18nKey || 'field.error.required' | translate}}
+      </ng-container>
+      <ng-container *ngSwitchCase="'email'">
+        {{errorMessage(error.key)?.i18nKey || 'field.error.email' | translate}}
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        {{errorMessage(error.key)?.i18nKey || 'field.error.invalid' | translate}}
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-template>

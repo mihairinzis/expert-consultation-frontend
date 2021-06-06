@@ -1,0 +1,20 @@
+<ec-alert *ngIf="formService.showAlert$ | async as alert"
+          [show]="!!alert"
+          [dismissAfter]="alert.type === 'success' && 4000 || 0"
+          [type]="alert.type">
+  {{alert.message.i18nKey | translate : alert.message?.i18nArgs}}
+</ec-alert>
+
+<ng-content></ng-content>
+
+<ng-container *ngIf="formService.editable">
+  <button class="h-10 px-5 rounded bg-blue-500 text-gray-100 focus:outline-none"
+          (click)="discard.emit()">
+    {{discardLabel || 'button.cancel' | translate}}
+  </button>
+  <button class="h-10 px-5 py-2 rounded bg-blue-500 text-gray-100 focus:outline-none ml-2"
+          [disabled]="(formService.valid$ | async) === false"
+          (click)="formService.error$.next(); save.emit()">
+    {{saveLabel || 'button.save' | translate}}
+  </button>
+</ng-container>

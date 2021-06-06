@@ -1,0 +1,16 @@
+<nav class="border-b bg-white px-6 py-2 flex items-center min-w-0 h-14"
+     *ngIf="data$ | async as data">
+  <a routerLink="/">
+    <img alt="..." class="navbar-brand-img" src="assets/img/logo.png">
+  </a>
+  <span class="flex-1"></span>
+  <h1 class="text-lg mr-2 cursor-pointer"
+      *ngFor="let link of data.links" [routerLink]="link.routerLink">
+    {{link.i18nKey | translate}}
+  </h1>
+  <button
+    class="ml-auto border rounded-full w-10 h-10 text-center leading-none text-gray-200 bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+    <i class="fa fa-user"></i>
+  </button>
+  <h1 class="ml-2">{{data.currentUserName}}</h1>
+</nav>

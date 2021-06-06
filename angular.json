@@ -50,8 +50,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@code4ro/expert-consultation-theme/vendor/nucleo/css/nucleo.css",
-              "node_modules/@code4ro/expert-consultation-theme/scss/argon.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -62,7 +60,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -90,6 +88,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "proxyConfig": "proxy.config.json"
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
