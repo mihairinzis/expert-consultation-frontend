@@ -23,14 +23,22 @@ export class FormService {
     this.valid$ = this.valid();
   }
 
-  setError(err: HttpErrorResponse | I18nMessage): Observable<any> {
+  resetForm(resetValue?: any): void {
+    if (resetValue) {
+      this.form?.patchValue(resetValue);
+    }
+    this.form?.markAsUntouched();
+    this.form?.markAsPristine();
+  }
+
+  setError(err: HttpErrorResponse | I18nMessage, formValue?: any): Observable<any> {
     if (err instanceof HttpErrorResponse) {
       // TODO: handle be translatable errors and assign potential field errors
       this.error$.next({i18nKey: `${err.status} - ${err.statusText}`})
     } else {
       this.error$.next(err);
     }
-    return of(err);
+    return of(formValue);
   }
 
   private showAlert(): Observable<{type: 'success' | 'warn' | 'error', message: I18nMessage} | null> {

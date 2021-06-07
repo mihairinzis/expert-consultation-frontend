@@ -9,8 +9,9 @@ import {TopBarComponent} from '@components/application-layout/top-bar/top-bar.co
 import {PageComponent} from './templates/page/page.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 import {FormComponent} from './templates/form/form.component';
-import {AlertComponent} from './components/alert/alert.component';
+import {AlertComponent} from '@components/alert/alert.component';
 import {FormFieldComponent} from './templates/form/form-field/form-field.component';
+import {FormInputDirective} from './templates/form/form-field/form-input.directive';
 
 const modules = [
   CommonModule,
@@ -29,11 +30,15 @@ const declarations = [
   FormComponent,
   FormFieldComponent,
   AlertComponent
-]
+];
+
+const directives = [
+  FormInputDirective
+];
 
 @NgModule({
-  declarations: [declarations],
+  declarations: [declarations, directives],
   imports: [modules],
-  exports: [modules, declarations]
+  exports: [modules, declarations, directives]
 })
 export class SharedModule { }
