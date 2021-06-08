@@ -1,9 +1,10 @@
 <ec-page title="Management Organizatii">
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+         *ngIf="organizations$ | async as organizationsPage">
 
       <div class="card m-2 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
-           *ngFor="let organization of organizations$ | async">
+           *ngFor="let organization of organizationsPage.content">
         <div class="m-3 flex flex-col h-64">
           <div class="flex justify-center">
             <div class="bg-indigo-500 h-24 w-24 rounded-full"></div>

@@ -1,22 +1,33 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {combineLatest, Observable, Subject} from "rxjs";
 import {Organization} from "@app/organization/organization-list-page/model/organization";
+import {map, startWith, switchMap} from "rxjs/operators";
+import {environment} from "@env/environment";
+import {HttpClient} from "@angular/common/http";
+import {Page} from "@app/shared/model/page";
 
 @Injectable()
 export class OrganizationListPageStore {
 
-  organizations$: Observable<Organization[]>;
+  organizations$: Observable<Page<Organization>>;
 
-  constructor() {
+  newPageIndex$ = new Subject<number>();
+  newPageSize$ = new Subject<number>();
+  newSort$ = new Subject<string>();
+
+  constructor(private http: HttpClient) {
     this.organizations$ = this.organizations();
   }
 
-  organizations(): Observable<Organization[]> {
-    return of(
-      Array(35).fill(0).map((_, i) => new Organization({
-        id: String(i),
-        name: `mock org ${i}`,
-      }))
-    )
+  organizations(): Observable<Page<Organization>> {
+    return combineLatest([
+      this.newPageIndex$.pipe(startWith(0)),
+      this.newPageSize$.pipe(startWith(20)),
+      this.newSort$.pipe(startWith('id,desc'))
+    ])
+      .pipe(
+        map(([page, size, sort]) => ({page, size, sort})),
+        switchMap(params => this.http.get<Page<Organization>>(`${environment.api}/organizations`, {params}))
+      );
   }
 }
