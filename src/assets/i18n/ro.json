@@ -1,7 +1,13 @@
 {
+  "common": {
+    "view": "Vizualizează",
+    "edit": "Editează"
+  },
   "field": {
     "label": {
-      "email": "Email"
+      "name": "Nume",
+      "email": "Email",
+      "phoneNumber": "Număr de telefon"
     },
     "error": {
       "required": "Câmp obligatoriu.",
@@ -16,6 +22,17 @@
       "list": "Mangement organizații",
       "detail": "Detaill organizație",
       "new": "Adaugă organizație"
+    },
+    "list": {
+      "new": "Adaugă organizație nouă"
+    },
+    "field": {
+      "numberOfMembers": "Număr membri",
+      "category": "Tip de organizație",
+      "category.NGO": "Organizație neguvernamentală",
+      "category.INDIVIDUAL_EXPERT": "Expert individual",
+      "category.PUBLIC": "Instituție publică",
+      "category.TEAM": "Echipă"
     }
   },
   "validation.Resource.not.found": "Resursa nu a fost găsită.",

@@ -1,10 +1,29 @@
-<ec-page>
+<ec-page [alert]="formService.showAlert$ | async">
   <ec-form *ngIf="data$ | async as data"
            (save)="saveOrganization()"
            (discard)="resetForm(data.organization)">
     <form [formGroup]="form">
-      <ec-form-field [abstractControl]="form.controls.name" controlType="text" label="field.label.name"></ec-form-field>
-      <ec-form-field [abstractControl]="form.controls.email" controlType="email" label="field.label.email"></ec-form-field>
+      <ec-form-field controlType="text" label="field.label.name"
+                     [abstractControl]="form.controls.name">
+      </ec-form-field>
+      <ec-form-field controlType="select" label="organization.field.category"
+                     [abstractControl]="form.controls.category">
+        <select formControlName="category" ecFormInput>
+          <option *ngFor="let category of categoryOptions()"
+                  [value]="category">
+            {{'organization.field.category.' + category | translate}}
+          </option>
+        </select>
+      </ec-form-field>
+      <ec-form-field controlType="number" label="organization.field.numberOfMembers"
+                     [abstractControl]="form.controls.numberOfMembers">
+      </ec-form-field>
+      <ec-form-field controlType="email" label="field.label.email"
+                     [abstractControl]="form.controls.email">
+      </ec-form-field>
+      <ec-form-field controlType="tel" label="field.label.phoneNumber"
+                     [abstractControl]="form.controls.phoneNumber">
+      </ec-form-field>
     </form>
   </ec-form>
 </ec-page>

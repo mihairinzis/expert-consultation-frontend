@@ -2,14 +2,17 @@
   <div class="mb-4 text-gray-700">
     <label class="block mb-1" *ngIf="label">{{label | translate}}</label>
 
+    <ng-container *ngSwitchCase="'select'">
+        <ng-content></ng-content>
+    </ng-container>
+
     <ng-container *ngSwitchDefault>
-      <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-             [class.border-red-700]="!!control.errors"
+      <input ecFormInput [hasErrors]="!!control.errors" [isTouched]="control.touched"
              [type]="controlType"
              [formControl]="control">
     </ng-container>
 
-    <ng-container *ngIf="control.errors"
+    <ng-container *ngIf="control.errors && control.touched"
                   [ngTemplateOutlet]="errors"
                   [ngTemplateOutletContext]="{$implicit: control.errors}">
     </ng-container>
