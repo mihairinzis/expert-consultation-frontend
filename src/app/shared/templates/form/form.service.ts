@@ -33,8 +33,14 @@ export class FormService {
 
   setError(err: HttpErrorResponse | I18nMessage, formValue?: any): Observable<any> {
     if (err instanceof HttpErrorResponse) {
-      // TODO: handle be translatable errors and assign potential field errors
-      this.error$.next({i18nKey: `${err.status} - ${err.statusText}`})
+      if (err.error?.fieldErrors) {
+        // TODO: assign potential field errors
+      }
+      if (err.error?.errors?.length) {
+        this.error$.next(err.error.errors[0]);
+      } else {
+        this.error$.next({i18nKey: `${err.status} - ${err.statusText}`})
+      }
     } else {
       this.error$.next(err);
     }

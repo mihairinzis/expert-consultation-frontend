@@ -1,14 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {OrganizationDetailPageStore} from "@app/organization/organization-list-page/organization-detail-page/organization-detail-page-store.service";
 import {Observable} from "rxjs";
 import {Organization} from "@app/organization/organization-list-page/model/organization";
 import {FormBuilder, Validators} from "@angular/forms";
 import {catchError, map, take, tap} from "rxjs/operators";
 import {FormService} from "@app/shared/templates/form/form.service";
-import {
-  OrganizationCategory,
-  OrganizationCategoryEnum
-} from "@app/organization/organization-list-page/model/organization-category";
+import {OrganizationCategory} from "@app/organization/organization-list-page/model/organization-category";
 
 @Component({
   selector: 'ec-organization-detail-page',

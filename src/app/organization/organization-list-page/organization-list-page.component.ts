@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {OrganizationListPageStore} from "@app/organization/organization-list-page/organization-list-page-store.service";
 import {Organization} from "@app/organization/organization-list-page/model/organization";
 import {Observable} from "rxjs";
+import {Page} from "@app/shared/model/page";
 
 @Component({
   selector: 'ec-organization-list-page',
@@ -11,7 +12,7 @@ import {Observable} from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrganizationListPageComponent {
-  organizations$: Observable<Organization[]>;
+  organizations$: Observable<Page<Organization>>;
 
   constructor(private organizationListPageStore: OrganizationListPageStore) {
     this.organizations$ = this.organizationListPageStore.organizations$;
