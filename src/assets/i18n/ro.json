@@ -5,13 +5,19 @@
     "add": "Adaugă {{value}}",
     "detail": "Detalii {{value}}",
     "saved.fem": "{{value}} a fost salvată cu succes.",
-    "saved.masc": "{{value}} a fost salvat cu succes."
+    "saved.masc": "{{value}} a fost salvat cu succes.",
+    "breadcrumb": {
+      "list": "Mangement {{value}}",
+      "detail": "Detalii {{value}}",
+      "new": "Adaugă {{value}}"
+    }
   },
   "field": {
     "label": {
       "name": "Nume",
       "email": "Email",
-      "phoneNumber": "Număr de telefon"
+      "phoneNumber": "Număr de telefon",
+      "search": "Caută {{value}}"
     },
     "error": {
       "required": "Câmp obligatoriu.",
@@ -22,15 +28,9 @@
     }
   },
   "organization": {
-    "label": "Organizația",
-    "breadcrumb": {
-      "list": "Mangement organizații",
-      "detail": "Detalii organizație",
-      "new": "Adaugă organizație"
-    },
-    "list": {
-      "new": "Adaugă organizație nouă"
-    },
+    "label": "organizație",
+    "label.plural": "organizații",
+    "label.defart": "Organizația",
     "field": {
       "numberOfMembers": "Număr membri",
       "category": "Tip de organizație",

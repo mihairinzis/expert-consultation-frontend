@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {OrganizationListPageComponent} from "@app/organization/organization-list-page/organization-list-page.component";
 import {OrganizationDetailPageComponent} from "@app/organization/organization-list-page/organization-detail-page/organization-detail-page.component";
+import {I18nMessage} from "@app/shared/model/i18n-message";
 
 const routes: Routes = [{
   path: '',
@@ -14,7 +15,9 @@ const routes: Routes = [{
     {
       path: 'new',
       component: OrganizationDetailPageComponent,
-      data: {breadcrumb: 'organization.breadcrumb.new'},
+      data: {
+        breadcrumb: {i18nKey: 'common.breadcrumb.new', i18nArgs: {value: 'organization.label'}}
+      },
     },
     {
       path: ':organizationId',
