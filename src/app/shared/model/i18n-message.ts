@@ -3,11 +3,10 @@ export class I18nMessage {
   i18nArgs?: any;
 
   constructor(message: I18nMessage | string) {
-    if (message instanceof I18nMessage) {
-      this.i18nKey = message.i18nKey;
-      this.i18nArgs = message.i18nArgs;
+    if ((message as I18nMessage)?.i18nKey) {
+      Object.assign(this, message);
     } else {
-      this.i18nKey = message;
+      this.i18nKey = message as string;
     }
   }
 }
