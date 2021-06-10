@@ -20,7 +20,11 @@ export class OrganizationDetailPageStore {
   }
 
   saveOrganization(organization: Organization): Observable<Organization> {
-    return this.http.post<Organization>(`${environment.api}/organizations`, organization)
+    const request = organization.id
+      ? this.http.put<Organization>(`${environment.api}/organizations/${organization.id}`, organization)
+      : this.http.post<Organization>(`${environment.api}/organizations`, organization);
+
+    return request
       .pipe(
         tap(saved => this.savedOrganization$.next(saved))
       );

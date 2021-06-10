@@ -4,6 +4,8 @@
 
 $fa-font-path: "~font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
+
+@import '~ngx-toastr/toastr';
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }

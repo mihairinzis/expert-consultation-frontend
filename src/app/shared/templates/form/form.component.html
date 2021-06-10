@@ -10,8 +10,8 @@
         {{discardLabel || 'button.cancel' | translate}}
       </button>
       <button class="h-10 px-5 py-2 rounded bg-green-500 text-gray-100 focus:outline-none ml-2 disabled:opacity-50"
-              [disabled]="(formService.valid$ | async) === false"
-              (click)="formService.error$.next(); save.emit()">
+              [disabled]="(formService.saveEnabled$ | async) === false"
+              (click)="save.emit()">
         {{saveLabel || 'button.save' | translate}}
       </button>
     </div>

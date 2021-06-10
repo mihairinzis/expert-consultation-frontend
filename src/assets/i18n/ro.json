@@ -1,7 +1,11 @@
 {
   "common": {
     "view": "Vizualizează",
-    "edit": "Editează"
+    "edit": "Editează",
+    "add": "Adaugă {{value}}",
+    "detail": "Detalii {{value}}",
+    "saved.fem": "{{value}} a fost salvată cu succes.",
+    "saved.masc": "{{value}} a fost salvat cu succes."
   },
   "field": {
     "label": {
@@ -18,9 +22,10 @@
     }
   },
   "organization": {
+    "label": "Organizația",
     "breadcrumb": {
       "list": "Mangement organizații",
-      "detail": "Detaill organizație",
+      "detail": "Detalii organizație",
       "new": "Adaugă organizație"
     },
     "list": {

@@ -1,67 +1,64 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {merge, Observable, of, Subject} from "rxjs";
-import {HttpErrorResponse} from "@angular/common/http";
 import {I18nMessage} from "@app/shared/model/i18n-message";
 import {FormGroup} from "@angular/forms";
 import {map, startWith} from "rxjs/operators";
+import {I18nApiErrors} from "@app/shared/model/i18n-api-errors";
+import {NotificationService} from "@app/core/services/notification.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable()
 export class FormService {
 
-  showAlert$: Observable<{type: 'success' | 'warn' | 'error', message: I18nMessage} | null>;
-  valid$: Observable<boolean>;
-  error$ = new Subject<I18nMessage>();
-  success$ = new Subject<I18nMessage | string>();
+  saveEnabled$: Observable<boolean>;
   editable: boolean;
 
   private form: FormGroup;
+  private formUntouched$ = new Subject<void>();
+
+  constructor(private notificationService: NotificationService,
+              private translateService: TranslateService) {
+  }
 
   init(form: FormGroup, editable?:boolean): void {
     this.form = form;
     this.editable = editable || true;
-    this.showAlert$ = this.showAlert();
-    this.valid$ = this.valid();
+    this.saveEnabled$ = this.saveEnabled();
   }
 
   resetForm(resetValue?: any): void {
     if (resetValue) {
       this.form?.patchValue(resetValue);
     }
-    this.form?.markAsUntouched();
-    this.form?.markAsPristine();
+    this.untouchForm();
   }
 
-  setError(err: HttpErrorResponse | I18nMessage, formValue?: any): Observable<any> {
-    if (err instanceof HttpErrorResponse) {
-      if (err.error?.fieldErrors) {
-        // TODO: assign potential field errors
-      }
-      if (err.error?.errors?.length) {
-        this.error$.next(err.error.errors[0]);
-      } else {
-        this.error$.next({i18nKey: `${err.status} - ${err.statusText}`})
-      }
-    } else {
-      this.error$.next(err);
+  setError(err: I18nApiErrors | I18nMessage, formValue?: any): Observable<any> {
+    if ((err as I18nApiErrors).fieldErrors) {
+      // TODO: assign potential field errors
     }
     return of(formValue);
   }
 
-  private showAlert(): Observable<{type: 'success' | 'warn' | 'error', message: I18nMessage} | null> {
-    const error$ = this.error$
-      .pipe(
-        map(err => err ? ({type: 'error' as any, message: err}) : null)
-      );
-    const success$ = this.success$
-      .pipe(
-        map(success => success ? ({type: 'success' as any, message: new I18nMessage(success)}) : null)
-      );
-
-    return merge(error$, success$);
+  formSavedSuccessfully(savedKey: string, valueTypeKey?: string): void {
+    this.untouchForm();
+    this.notificationService.success({
+      i18nKey: savedKey,
+      i18nArgs: valueTypeKey && {value: this.translateService.instant(valueTypeKey)} || null
+    });
   }
 
-  private valid(): Observable<boolean> {
-    return this.form.statusChanges
+  private untouchForm(): void {
+    this.formUntouched$.next();
+    this.form?.markAsUntouched();
+    this.form?.markAsPristine();
+  }
+
+  private saveEnabled(): Observable<boolean> {
+    return merge(
+      this.form.statusChanges,
+      this.formUntouched$.pipe(map(() => 'INVALID'))
+    )
       .pipe(
         startWith('INVALID'),
         map(validity => validity === 'VALID')

@@ -11,14 +11,6 @@
   </xng-breadcrumb>
 
   <div class="mt-4">
-
-    <div class="w-2/5 mb-4">
-      <ec-alert *ngIf="alert" [show]="!!alert" [type]="alert.type"
-                [dismissAfter]="alert.type === 'success' && 4000 || 0">
-        {{alert.message.i18nKey | translate : alert.message?.i18nArgs}}
-      </ec-alert>
-    </div>
-
     <ng-content></ng-content>
   </div>
 </div>

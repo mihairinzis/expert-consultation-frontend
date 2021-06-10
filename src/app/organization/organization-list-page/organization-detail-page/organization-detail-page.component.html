@@ -1,7 +1,7 @@
-<ec-page [alert]="formService.showAlert$ | async">
-  <ec-form *ngIf="data$ | async as data"
+<ec-page>
+  <ec-form *ngIf="organization$ | async as organization"
            (save)="saveOrganization()"
-           (discard)="resetForm(data.organization)">
+           (discard)="resetForm(organization)">
     <form [formGroup]="form">
       <ec-form-field controlType="text" label="field.label.name"
                      [abstractControl]="form.controls.name">

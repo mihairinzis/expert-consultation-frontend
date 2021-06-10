@@ -1,11 +1,12 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {OrganizationDetailPageStore} from "@app/organization/organization-list-page/organization-detail-page/organization-detail-page-store.service";
 import {Observable} from "rxjs";
 import {Organization} from "@app/organization/organization-list-page/model/organization";
 import {FormBuilder, Validators} from "@angular/forms";
-import {catchError, map, take, tap} from "rxjs/operators";
+import {catchError, filter, take, tap} from "rxjs/operators";
 import {FormService} from "@app/shared/templates/form/form.service";
 import {OrganizationCategory} from "@app/organization/organization-list-page/model/organization-category";
+import {RoutingService} from "@app/core/services/routing.service";
 
 @Component({
   selector: 'ec-organization-detail-page',
@@ -14,11 +15,10 @@ import {OrganizationCategory} from "@app/organization/organization-list-page/mod
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [OrganizationDetailPageStore, FormService]
 })
-export class OrganizationDetailPageComponent {
+export class OrganizationDetailPageComponent implements OnInit {
 
-  data$: Observable<{
-    organization: Organization
-  }>;
+  organizationId: string | number | null;
+  organization$: Observable<Organization>;
 
   form = this.formBuilder.group({
     id: [''],
@@ -31,15 +31,18 @@ export class OrganizationDetailPageComponent {
 
   constructor(private organizationDetailPageStore: OrganizationDetailPageStore,
               public formService: FormService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private routingService: RoutingService) {
     this.formService.init(this.form);
 
-    this.data$ = this.organizationDetailPageStore.organization$
+    this.organization$ = this.organizationDetailPageStore.organization$
       .pipe(
-        catchError(err => this.formService.setError(err, new Organization())),
-        tap(organization => this.resetForm(organization)),
-        map(organization => ({organization}))
+        tap(organization => this.resetForm(organization))
       );
+  }
+
+  ngOnInit(): void {
+    this.organizationId = this.routingService.getParam('organizationId');
   }
 
   saveOrganization(): void {
@@ -47,7 +50,9 @@ export class OrganizationDetailPageComponent {
       .pipe(
         take(1),
         catchError(err => this.formService.setError(err, new Organization())),
-        tap(() => this.formService.success$.next('Organizatia a fost salvata'))
+        tap(() => this.formService.formSavedSuccessfully('common.saved.fem', 'organization.label')),
+        filter(org => !this.organizationId && !!org.id),
+        tap(org => this.routingService.navigate(['/organizations', org.id])),
       ).subscribe();
   }
 

@@ -3,7 +3,7 @@ import {distinctUntilChanged, filter, map, shareReplay, tap} from 'rxjs/operator
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,
-  NavigationEnd,
+  NavigationEnd, NavigationExtras,
   Router
 } from '@angular/router';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -25,8 +25,12 @@ export class RoutingService {
       ).subscribe();
   }
 
+  navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
+    return this.router.navigate(commands, extras);
+  }
+
   getParam(param: string): string | number | null {
-    return this.getParameter(this.currentRoute.snapshot, param);
+    return this.getParameter(this.currentRoute?.snapshot, param);
   }
 
   getParamChanges(url: string, parameter: string): Observable<string | number | null> {
