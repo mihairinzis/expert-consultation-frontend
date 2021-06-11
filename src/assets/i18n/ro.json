@@ -264,7 +264,7 @@
     }
   },
   "header": {
-    "profile": "Profil",
+    "profile": "Profil utilizator",
     "login": "Log in",
     "logout": "Deconectare",
     "about": "Despre",
@@ -274,6 +274,7 @@
   },
   "sideNav": {
     "dashboard": "Dashboard",
+    "organizations": "Organizații",
     "addDocument": "Adaugă document nou",
     "documentArchive": "Arhivă documente",
     "userManagement": "Management utilizatori",

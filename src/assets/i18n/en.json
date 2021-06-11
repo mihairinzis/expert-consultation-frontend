@@ -160,7 +160,7 @@
     }
   },
   "header": {
-    "profile": "Profile",
+    "profile": "User profile",
     "login": "Log in",
     "logout": "Log out",
     "about": "About",

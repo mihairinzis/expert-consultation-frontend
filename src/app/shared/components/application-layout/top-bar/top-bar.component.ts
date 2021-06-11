@@ -13,9 +13,10 @@ import {map} from "rxjs/operators";
 })
 export class TopBarComponent {
 
+  mobileMenuOpen = false;
   data$: Observable<{
     links: Link[],
-    currentUserName: string
+    currentUserName: string,
   }>;
 
   constructor(private topBarStore: TopBarStore) {
