@@ -1,39 +1,45 @@
-<ec-page title="Management Organizatii">
+<ec-page>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-         *ngIf="organizations$ | async as organizationsPage">
+  <div top-right>
+    <div class="shadow flex">
+      <input class="w-full rounded p-2" type="text"
+             (input)="onSearchChange($event)"
+             [placeholder]="'field.label.search' | translate : {value: 'organization.label' | translate }">
+    </div>
+  </div>
 
-      <div class="card m-2 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
-           *ngFor="let organization of organizationsPage.content">
-        <div class="m-3 flex flex-col h-64">
-          <div class="flex justify-center">
-            <div class="bg-indigo-500 h-24 w-24 rounded-full"></div>
-          </div>
-          <h1 class="mt-2 flex justify-center">{{organization.name}}</h1>
-          <div class="mt-2 flex justify-center">
-            <span class="text-xs px-2 font-medium bg-green-500 bg-opacity-10 text-green-800 rounded py-0.5">
-              Activa
-            </span>
-          </div>
-          <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
-            <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.view' | translate}}</a>
-            <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.edit' | translate}}</a>
-          </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+       *ngIf="organizations$ | async as organizationsPage">
+
+    <div class="card m-2 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200"
+         *ngFor="let organization of organizationsPage.content">
+      <div class="m-3 flex flex-col h-64">
+        <div class="flex justify-center">
+          <div class="bg-indigo-500 h-24 w-24 rounded-full"></div>
+        </div>
+        <h1 class="mt-2 flex justify-center">{{organization.name}}</h1>
+        <div class="mt-2 flex justify-center">
+          <span class="text-xs px-2 font-medium bg-green-500 bg-opacity-10 text-green-800 rounded py-0.5">
+            Activa
+          </span>
+        </div>
+        <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
+          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.view' | translate}}</a>
+          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.edit' | translate}}</a>
         </div>
       </div>
-
-      <div class="card m-2 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
-        <div class="m-3 flex flex-col content-center h-64">
-          <div class="flex justify-center">
-            <i class="fa fa-plus fa-5x"></i>
-          </div>
-          <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
-            <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" routerLink="new">{{'organization.list.new' | translate}}</a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
+    <div class="card m-2 border border-gray-400 rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
+      <div class="m-3 flex flex-col content-center h-64">
+        <div class="flex justify-center">
+          <i class="fa fa-plus fa-5x"></i>
+        </div>
+        <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
+          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" routerLink="new">{{'organization.list.new' | translate}}</a>
+        </div>
+      </div>
+    </div>
 
+  </div>
 </ec-page>

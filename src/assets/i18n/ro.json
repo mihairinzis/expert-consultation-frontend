@@ -11,7 +11,8 @@
     "label": {
       "name": "Nume",
       "email": "Email",
-      "phoneNumber": "Număr de telefon"
+      "phoneNumber": "Număr de telefon",
+      "search": "Caută {{value}}"
     },
     "error": {
       "required": "Câmp obligatoriu.",
@@ -22,7 +23,7 @@
     }
   },
   "organization": {
-    "label": "Organizația",
+    "label": "organizație",
     "breadcrumb": {
       "list": "Mangement organizații",
       "detail": "Detalii organizație",
