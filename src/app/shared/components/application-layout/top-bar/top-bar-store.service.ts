@@ -6,7 +6,7 @@ import {Link} from "@app/shared/components/application-layout/top-bar/model/link
 export class TopBarStore {
 
   links$: Observable<Link[]>;
-  currentUserName$: Observable<string>
+  currentUserName$: Observable<string>;
 
   constructor() {
     this.links$ = this.links();
@@ -16,7 +16,7 @@ export class TopBarStore {
   private links(): Observable<Link[]> {
     return of([
       {i18nKey: 'sideNav.dashboard', routerLink: '/'},
-      {i18nKey: 'Organizatii', routerLink: 'organizations'}
+      {i18nKey: 'sideNav.organizations', routerLink: 'organizations'}
     ]);
   }
 
