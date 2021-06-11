@@ -1,0 +1,36 @@
+<ec-page>
+  <div top-right>
+    <div class="shadow flex">
+      <input class="w-full rounded p-2" type="text"
+             (input)="onSearchChange($event)"
+             [placeholder]="'field.label.search' | translate : {value: 'document.label' | translate }">
+    </div>
+  </div>
+
+  <div class="w-2/5">
+    <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+        <thead>
+        <tr>
+          <th class="py-4 px-6 bg-grey-lightest font-bold text-sm text-grey-dark border-b border-grey-light">Titlu</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngIf="documents$ | async as documents">
+          <tr *ngFor="let document of documents.content"
+              class="hover:bg-grey-lighter cursor-pointer" [routerLink]="document.id">
+            <td class="py-4 px-6 border-b border-grey-light">
+              <h1>{{document.title}}</h1>
+            </td>
+          </tr>
+        </ng-container>
+        <tr class="hover:bg-grey-lighter cursor-pointer" routerLink="new">
+          <td class="py-4 px-6 border-b border-grey-light">
+            <h1>{{'common.add' | translate : {value: 'document.label' | translate} }}</h1>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ec-page>

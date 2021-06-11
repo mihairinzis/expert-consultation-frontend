@@ -1,0 +1,31 @@
+<ec-page>
+  <form [formGroup]="form">
+    <div class="flex">
+      <ec-form class="w-1/4"
+               *ngIf="document$ | async as document"
+               (discard)="resetForm(document)"
+               (save)="saveDocument()">
+        <ec-form-field [abstractControl]="form.controls.title" controlType="text" label="document.field.title"></ec-form-field>
+      </ec-form>
+
+      <div ecSection class="w-3/4">
+        <ng-container formArrayName="blocks">
+          <ng-container *ngFor="let block of blocks.controls; let i=index">
+            <div class="mt-10" [formGroupName]="i">
+              <angular-editor placeholder="Scrie textul..."
+                              [id]="block.get('id')?.value"
+                              [config]="editorConfig"
+                              formControlName="content">
+              </angular-editor>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <button ecPrimaryButton class="bg-blue-500 mt-10"
+                (click)="addBlock()">
+          {{'document.block.add' | translate}}
+        </button>
+      </div>
+    </div>
+  </form>
+</ec-page>

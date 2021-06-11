@@ -9,7 +9,10 @@ import {PageComponent} from './templates/page/page.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 import {FormComponent} from './templates/form/form.component';
 import {FormFieldComponent} from './templates/form/form-field/form-field.component';
-import {FormInputDirective} from './templates/form/form-field/form-input.directive';
+import {FormInputDirective} from './templates/directives/form-input.directive';
+import {AngularEditorModule} from "@kolkov/angular-editor";
+import {SectionDirective} from "@app/shared/templates/directives/section";
+import {PrimaryButtonDirective} from './templates/directives/primary-button.directive';
 
 const modules = [
   CommonModule,
@@ -17,7 +20,8 @@ const modules = [
   ReactiveFormsModule,
   RouterModule,
   TranslateModule,
-  BreadcrumbModule
+  BreadcrumbModule,
+  AngularEditorModule
 ];
 
 const declarations = [
@@ -29,7 +33,9 @@ const declarations = [
 ];
 
 const directives = [
-  FormInputDirective
+  FormInputDirective,
+  SectionDirective,
+  PrimaryButtonDirective
 ];
 
 @NgModule({

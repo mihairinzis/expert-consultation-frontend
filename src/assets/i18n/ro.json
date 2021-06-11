@@ -22,6 +22,20 @@
       "email": "Adresa de mail este incorectă."
     }
   },
+  "document": {
+    "label": "document",
+    "breadcrumb": {
+      "list": "Mangement documente",
+      "detail": "Detalii document",
+      "new": "Adaugă document"
+    },
+    "block": {
+      "add": "+ Adaugă secțiune"
+    },
+    "field": {
+      "title": "Titlu"
+    }
+  },
   "organization": {
     "label": "organizație",
     "breadcrumb": {
@@ -185,7 +199,7 @@
       "content": "Conținut"
     }
   },
-  "document": {
+  "document_old": {
     "members": {
       "add": "Adaugă membri"
     },
@@ -275,7 +289,7 @@
   "sideNav": {
     "dashboard": "Dashboard",
     "organizations": "Organizații",
-    "addDocument": "Adaugă document nou",
+    "document": "Documente",
     "documentArchive": "Arhivă documente",
     "userManagement": "Management utilizatori",
     "dictionary": "Dicționar",
