@@ -17,4 +17,8 @@ export class OrganizationListPageComponent {
   constructor(private organizationListPageStore: OrganizationListPageStore) {
     this.organizations$ = this.organizationListPageStore.organizations$;
   }
+
+  onSearchChange($event: Event) {
+    this.organizationListPageStore.nameFilter$.next(($event.target as any)?.value);
+  }
 }
