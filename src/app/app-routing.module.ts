@@ -10,7 +10,8 @@ const routes: Routes = [
     children: [
       {path: '', pathMatch: 'full', redirectTo: 'dashboard'},
       {path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
-      {path: 'organizations', loadChildren: () => import('./organization/organization.module').then(m => m.OrganizationModule)}
+      {path: 'organizations', loadChildren: () => import('./organization/organization.module').then(m => m.OrganizationModule)},
+      {path: 'documents', loadChildren: () => import('./document/document.module').then(m => m.DocumentModule)},
     ]
   },
 ];

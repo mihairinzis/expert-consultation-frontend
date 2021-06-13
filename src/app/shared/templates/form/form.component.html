@@ -1,20 +1,16 @@
-<div class="w-2/5 border border-gray-400 rounded-lg">
+<div ecSection>
+  <ng-content></ng-content>
 
-  <div class="m-10 pb-4">
-    <ng-content></ng-content>
-
-    <div class="float-right"
-      *ngIf="formService.editable">
-      <button class="h-10 px-5 text-blue-600 font-medium underline"
-              (click)="discard.emit()">
-        {{discardLabel || 'button.cancel' | translate}}
-      </button>
-      <button class="h-10 px-5 py-2 rounded bg-green-500 text-gray-100 focus:outline-none ml-2 disabled:opacity-50"
-              [disabled]="(formService.saveEnabled$ | async) === false"
-              (click)="save.emit()">
-        {{saveLabel || 'button.save' | translate}}
-      </button>
-    </div>
+  <div class="float-right"
+       *ngIf="formService.editable">
+    <button class="h-10 px-5 text-blue-600 font-medium underline"
+            (click)="discard.emit()">
+      {{discardLabel || 'button.cancel' | translate}}
+    </button>
+    <button ecPrimaryButton class="bg-green-500 ml-2"
+            [disabled]="(formService.saveEnabled$ | async) === false"
+            (click)="save.emit()">
+      {{saveLabel || 'button.save' | translate}}
+    </button>
   </div>
-
 </div>

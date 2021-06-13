@@ -16,7 +16,8 @@ export class TopBarStore {
   private links(): Observable<Link[]> {
     return of([
       {i18nKey: 'sideNav.dashboard', routerLink: '/'},
-      {i18nKey: 'sideNav.organizations', routerLink: 'organizations'}
+      {i18nKey: 'sideNav.organizations', routerLink: 'organizations'},
+      {i18nKey: 'sideNav.document', routerLink: 'documents'}
     ]);
   }
 
