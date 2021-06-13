@@ -8,6 +8,7 @@ import {DocumentDetailPageStore} from "@app/document/document-list-page/document
 import {RoutingService} from "@app/core/services/routing.service";
 import {catchError, filter, take, tap} from "rxjs/operators";
 import {DocumentBlock} from "@app/document/document-list-page/model/document-block";
+import {CanLeave} from "@app/core/guards/can-leave-component.guard";
 
 @Component({
   selector: 'ec-document-detail-page',
@@ -16,7 +17,7 @@ import {DocumentBlock} from "@app/document/document-list-page/model/document-blo
   providers: [DocumentDetailPageStore, FormService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocumentDetailPageComponent {
+export class DocumentDetailPageComponent implements OnInit, CanLeave {
 
   documentId: string | number | null;
   document$: Observable<Document>;
@@ -43,12 +44,15 @@ export class DocumentDetailPageComponent {
     this.documentId = this.routingService.getParam('documentId');
   }
 
+  canLeave(): boolean | Observable<boolean> {
+    return this.formService.confirmLeaveIfDirty();
+  }
+
   saveDocument(): void {
     this.documentDetailPageStore.saveDocument(this.form.value)
       .pipe(
         take(1),
         catchError(err => this.formService.setError(err, new Document())),
-        tap(() => this.formService.formSavedSuccessfully('common.saved.masc', 'document.label')),
         filter(doc => !this.documentId && !!doc.id),
         tap(doc => this.routingService.navigate(['/documents', doc.id])),
       ).subscribe();

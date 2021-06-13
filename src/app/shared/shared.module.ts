@@ -9,10 +9,12 @@ import {PageComponent} from './templates/page/page.component';
 import {BreadcrumbModule} from "xng-breadcrumb";
 import {FormComponent} from './templates/form/form.component';
 import {FormFieldComponent} from './templates/form/form-field/form-field.component';
-import {FormInputDirective} from './templates/directives/form-input.directive';
+import {FormInputDirective} from './directives/form-input.directive';
 import {AngularEditorModule} from "@kolkov/angular-editor";
-import {SectionDirective} from "@app/shared/templates/directives/section";
-import {PrimaryButtonDirective} from './templates/directives/primary-button.directive';
+import {SectionDirective} from "@app/shared/directives/section";
+import {ButtonDirective} from "@app/shared/directives/button.directive";
+import {DialogCloseDirective, DialogModule} from "@ngneat/dialog";
+import {ConfirmDialogComponent} from "@components/confirm-dialog/confirm-dialog.component";
 
 const modules = [
   CommonModule,
@@ -21,7 +23,8 @@ const modules = [
   RouterModule,
   TranslateModule,
   BreadcrumbModule,
-  AngularEditorModule
+  AngularEditorModule,
+  DialogModule
 ];
 
 const declarations = [
@@ -29,13 +32,14 @@ const declarations = [
   TopBarComponent,
   PageComponent,
   FormComponent,
-  FormFieldComponent
+  FormFieldComponent,
+  ConfirmDialogComponent
 ];
 
 const directives = [
   FormInputDirective,
   SectionDirective,
-  PrimaryButtonDirective
+  ButtonDirective
 ];
 
 @NgModule({

@@ -1,0 +1,18 @@
+<div class="min-w-screen h-screen fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none">
+  <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+    <div class="text-center p-5 flex-auto justify-center">
+      <h2 class="text-xl font-bold py-4 ">{{ref.data?.title | translate}}</h2>
+      <p class="text-sm text-gray-500 px-8">{{ref.data?.message | translate}}</p>
+    </div>
+    <div class="p-3 mt-2 text-center space-x-4 md:block">
+      <h1 ecButton type="secondary" class="inline"
+          (click)="ref.close()">
+        {{'button.cancel' | translate}}
+      </h1>
+      <button ecButton class="bg-green-500 ml-2 px-5"
+              [dialogClose]="true">
+        {{'button.confirm' | translate}}
+      </button>
+    </div>
+  </div>
+</div>

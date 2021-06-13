@@ -7,6 +7,7 @@ import {catchError, filter, take, tap} from "rxjs/operators";
 import {FormService} from "@app/shared/templates/form/form.service";
 import {OrganizationCategory} from "@app/organization/organization-list-page/model/organization-category";
 import {RoutingService} from "@app/core/services/routing.service";
+import {CanLeave} from "@app/core/guards/can-leave-component.guard";
 
 @Component({
   selector: 'ec-organization-detail-page',
@@ -15,7 +16,7 @@ import {RoutingService} from "@app/core/services/routing.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [OrganizationDetailPageStore, FormService]
 })
-export class OrganizationDetailPageComponent implements OnInit {
+export class OrganizationDetailPageComponent implements OnInit, CanLeave {
 
   organizationId: string | number | null;
   organization$: Observable<Organization>;
@@ -50,10 +51,13 @@ export class OrganizationDetailPageComponent implements OnInit {
       .pipe(
         take(1),
         catchError(err => this.formService.setError(err, new Organization())),
-        tap(() => this.formService.formSavedSuccessfully('common.saved.fem', 'organization.label')),
         filter(org => !this.organizationId && !!org.id),
         tap(org => this.routingService.navigate(['/organizations', org.id])),
       ).subscribe();
+  }
+
+  canLeave(): boolean | Observable<boolean> {
+    return this.formService.confirmLeaveIfDirty();
   }
 
   resetForm(organization: Organization): void {

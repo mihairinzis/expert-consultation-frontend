@@ -24,8 +24,8 @@
           </span>
         </div>
         <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
-          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.view' | translate}}</a>
-          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" [routerLink]="organization.id">{{'common.edit' | translate}}</a>
+          <a ecButton type="secondary" class="block text-center m-auto w-1/2 text-xs" [routerLink]="organization.id">{{'common.view' | translate}}</a>
+          <a ecButton type="secondary" class="block text-center m-auto w-1/2 text-xs" [routerLink]="organization.id">{{'common.edit' | translate}}</a>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
           <i class="fa fa-plus fa-5x"></i>
         </div>
         <div class="absolute w-100 bottom-0 inset-x-0 h-12 flex border-t border-gray-400 px-4 py-2 rounded divide-x divide-gray-400">
-          <a class="block text-center m-auto w-1/2 text-blue-600 font-medium text-xs underline" routerLink="new">{{'organization.list.new' | translate}}</a>
+          <a ecButton type="secondary" class="block text-center m-auto w-1/2 text-xs" routerLink="new">{{'organization.list.new' | translate}}</a>
         </div>
       </div>
     </div>
