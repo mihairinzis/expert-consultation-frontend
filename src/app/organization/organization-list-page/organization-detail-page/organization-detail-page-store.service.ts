@@ -3,7 +3,7 @@ import {merge, Observable, of, Subject} from "rxjs";
 import {Organization} from "@app/organization/organization-list-page/model/organization";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "@env/environment";
-import {filter, map, switchMap, tap} from "rxjs/operators";
+import {switchMap, tap} from "rxjs/operators";
 import {RoutingService} from "@app/core/services/routing.service";
 
 @Injectable()

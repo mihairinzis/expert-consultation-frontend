@@ -4,8 +4,7 @@ import {I18nMessage} from "@app/shared/model/i18n-message";
 import {FormGroup} from "@angular/forms";
 import {map, startWith} from "rxjs/operators";
 import {I18nApiErrors} from "@app/shared/model/i18n-api-errors";
-import {NotificationService} from "@app/core/services/notification.service";
-import {TranslateService} from "@ngx-translate/core";
+import {DialogService} from "@ngneat/dialog";
 
 @Injectable()
 export class FormService {
@@ -16,8 +15,7 @@ export class FormService {
   private form: FormGroup;
   private formUntouched$ = new Subject<void>();
 
-  constructor(private notificationService: NotificationService,
-              private translateService: TranslateService) {
+  constructor(private dialog: DialogService) {
   }
 
   init(form: FormGroup, editable?:boolean): void {
@@ -40,15 +38,17 @@ export class FormService {
     return of(formValue);
   }
 
-  formSavedSuccessfully(savedKey: string, valueTypeKey?: string): void {
-    this.untouchForm();
-    this.notificationService.success({
-      i18nKey: savedKey,
-      i18nArgs: valueTypeKey && {value: this.translateService.instant(valueTypeKey)} || null
-    });
+  confirmLeaveIfDirty(): boolean | Observable<boolean> {
+    if (!this.form.dirty) {
+      return true;
+    }
+    return this.dialog.confirm({} as any, {data: {
+        title: 'Inchide',
+        message: 'Modificarile nesalvate vor fi pierdute.'
+    }}).afterClosed$;
   }
 
-  private untouchForm(): void {
+  public untouchForm(): void {
     this.formUntouched$.next();
     this.form?.markAsUntouched();
     this.form?.markAsPristine();

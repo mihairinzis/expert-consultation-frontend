@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import {Observable, ReplaySubject} from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class RoutingService {
 
   currentRoute: ActivatedRoute;

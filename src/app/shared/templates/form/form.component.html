@@ -3,14 +3,14 @@
 
   <div class="float-right"
        *ngIf="formService.editable">
-    <button class="h-10 px-5 text-blue-600 font-medium underline"
-            (click)="discard.emit()">
-      {{discardLabel || 'button.cancel' | translate}}
-    </button>
-    <button ecPrimaryButton class="bg-green-500 ml-2"
+    <h1 ecButton type="secondary" class="inline"
+        (click)="discard.emit()">
+      {{discardLabel || 'common.cancel' | translate}}
+    </h1>
+    <button ecButton class="bg-green-500 ml-2 px-5"
             [disabled]="(formService.saveEnabled$ | async) === false"
-            (click)="save.emit()">
-      {{saveLabel || 'button.save' | translate}}
+            (click)="formService.untouchForm(); save.emit()">
+      {{saveLabel || 'common.save' | translate}}
     </button>
   </div>
 </div>

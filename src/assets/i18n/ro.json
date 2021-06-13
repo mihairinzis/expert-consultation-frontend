@@ -4,8 +4,12 @@
     "edit": "Editează",
     "add": "Adaugă {{value}}",
     "detail": "Detalii {{value}}",
-    "saved.fem": "{{value}} a fost salvată cu succes.",
-    "saved.masc": "{{value}} a fost salvat cu succes."
+    "request": {
+      "pending": "În lucru..."
+    },
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "confirm": "Confirmă"
   },
   "field": {
     "label": {
@@ -34,7 +38,8 @@
     },
     "field": {
       "title": "Titlu"
-    }
+    },
+    "saved": "Documentul a fost salvat cu succes."
   },
   "organization": {
     "label": "organizație",
@@ -53,7 +58,8 @@
       "category.INDIVIDUAL_EXPERT": "Expert individual",
       "category.PUBLIC": "Instituție publică",
       "category.TEAM": "Echipă"
-    }
+    },
+    "saved": "Organizația a fost salvată cu succes."
   },
   "validation.Resource.not.found": "Resursa nu a fost găsită.",
   "register": {
