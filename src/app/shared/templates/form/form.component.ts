@@ -4,7 +4,6 @@ import {FormService} from "@app/shared/templates/form/form.service";
 @Component({
   selector: 'ec-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent {
