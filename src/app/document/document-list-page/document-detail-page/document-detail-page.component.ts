@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormService} from "@app/shared/templates/form/form.service";
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
-import {AngularEditorConfig} from "@kolkov/angular-editor";
 import {Observable} from "rxjs";
 import {Document} from "@app/document/document-list-page/model/document";
 import {DocumentDetailPageStore} from "@app/document/document-list-page/document-detail-page/document-detail-page-store.service";
@@ -9,6 +8,7 @@ import {RoutingService} from "@app/core/services/routing.service";
 import {catchError, filter, take, tap} from "rxjs/operators";
 import {DocumentBlock} from "@app/document/document-list-page/model/document-block";
 import {CanLeave} from "@app/core/guards/can-leave-component.guard";
+import {Editor, Toolbar} from "ngx-editor";
 
 @Component({
   selector: 'ec-document-detail-page',
@@ -20,6 +20,15 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
 
   documentId: string | number | null;
   document$: Observable<Document>;
+  editableBlockIndex: number;
+  editor: Editor = new Editor({history: true});
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
 
   form = this.formBuilder.group({
     id: [''],
@@ -43,6 +52,10 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
     this.documentId = this.routingService.getParam('documentId');
   }
 
+  ngOnDestroy(): void {
+    this.editor.destroy();
+  }
+
   canLeave(): boolean | Observable<boolean> {
     return this.formService.confirmLeaveIfDirty();
   }
@@ -59,46 +72,26 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
 
   resetForm(document: Document): void {
     this.formService.resetForm(document);
+    this.editableBlockIndex = -1;
     this.blocks.clear();
-    document.blocks.forEach(block => this.addBlock(block));
+    if (document.blocks?.length) {
+      document.blocks.forEach(block => this.addBlock(block));
+    } else {
+      this.addBlock();
+    }
   }
 
-  addBlock(block?: DocumentBlock) {
+  addBlock(block?: DocumentBlock): void {
     this.blocks.push(this.formBuilder.group({
       id: [block?.id || ''],
       content: [block?.content || ''],
       index: [block?.index || this.blocks.length]
     }));
+    this.editableBlockIndex = this.blocks.length - 1;
   }
 
   get blocks(): FormArray {
     return this.form.get('blocks') as FormArray;
   }
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    enableToolbar: true,
-    showToolbar: true,
-    toolbarHiddenButtons: [
-      [
-        'insertUnorderedList',
-        'insertOrderedList',
-        'heading',
-        'fontName'
-      ],
-      [
-        'fontSize',
-        'textColor',
-        'backgroundColor',
-        'customClasses',
-        'link',
-        'unlink',
-        'insertImage',
-        'insertVideo',
-        'insertHorizontalRule',
-        'removeFormat',
-        'toggleEditorMode'
-      ]
-    ]
-  };
 }
