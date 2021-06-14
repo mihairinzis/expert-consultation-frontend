@@ -1,33 +1,38 @@
 <ec-page>
   <form [formGroup]="form">
-    <div class="flex">
-      <ec-form class="w-1/4"
+    <div class="md:flex">
+      <ec-form class="lg:w-1/4"
                *ngIf="document$ | async as document"
                (discard)="resetForm(document)"
                (save)="saveDocument()">
-        <ec-form-field [abstractControl]="form.controls.title" controlType="text" label="document.field.title"></ec-form-field>
+        <ec-form-field [abstractControl]="form.controls.title" controlType="text"
+                       label="document.field.title"></ec-form-field>
       </ec-form>
 
-      <div ecSection class="w-3/4">
-        <ng-container formArrayName="blocks">
+      <div ecSection class="lg:w-3/4">
+        <div formArrayName="blocks">
           <ng-container *ngFor="let block of blocks.controls; let i=index">
-            <div [formGroupName]="i">
-              <div *ngIf="editableBlockIndex !== i" [innerHTML]="block.get('content')?.value"
-                   (click)="editableBlockIndex = i"></div>
-              <div *ngIf="editableBlockIndex === i" class="mt-5 mb-5 NgxEditor__Wrapper">
-                <ngx-editor-menu [editor]="editor"
-                                 [toolbar]="toolbar">
-                </ngx-editor-menu>
-                <ngx-editor [editor]="editor"
-                            formControlName="content"
-                            placeholder="Scrie textul...">
-                </ngx-editor>
+            <div class="group" *ngIf="editableBlockIndex !== i">
+              <div class="absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in">
+                <i class="fa fa-pencil mr-1 cursor-pointer" (click)="editableBlockIndex = i"></i>
+                <i class="fa fa-trash mr-2 cursor-pointer" (click)="removeBlock(i)"></i>
               </div>
+              <div class="break-all group-hover:opacity-30" [innerHTML]="safeBlockContent(i)"></div>
+            </div>
+            <div *ngIf="editableBlockIndex === i" class="mt-5 mb-5 NgxEditor__Wrapper">
+              <ngx-editor-menu [editor]="editor"
+                               [toolbar]="toolbar">
+              </ngx-editor-menu>
+              <ngx-editor [editor]="editor"
+                          [ngModel]="block.get('content')?.value" [ngModelOptions]="{standalone: true}"
+                          (ngModelChange)="blockContentChanged(i, $event)"
+                          placeholder="Scrie textul...">
+              </ngx-editor>
             </div>
           </ng-container>
-        </ng-container>
+        </div>
 
-        <button ecButton class="bg-blue-500 mt-10 w-1/4"
+        <button ecButton class="bg-blue-500 w-full mt-4 md:w-1/3 lg:w-1/4"
                 (click)="addBlock()">
           {{'document.block.add' | translate}}
         </button>
