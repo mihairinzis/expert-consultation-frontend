@@ -11,17 +11,23 @@
       <div ecSection class="w-3/4">
         <ng-container formArrayName="blocks">
           <ng-container *ngFor="let block of blocks.controls; let i=index">
-            <div class="mt-10" [formGroupName]="i">
-              <angular-editor placeholder="Scrie textul..."
-                              [id]="block.get('id')?.value"
-                              [config]="editorConfig"
-                              formControlName="content">
-              </angular-editor>
+            <div [formGroupName]="i">
+              <div *ngIf="editableBlockIndex !== i" [innerHTML]="block.get('content')?.value"
+                   (click)="editableBlockIndex = i"></div>
+              <div *ngIf="editableBlockIndex === i" class="mt-5 mb-5 NgxEditor__Wrapper">
+                <ngx-editor-menu [editor]="editor"
+                                 [toolbar]="toolbar">
+                </ngx-editor-menu>
+                <ngx-editor [editor]="editor"
+                            formControlName="content"
+                            placeholder="Scrie textul...">
+                </ngx-editor>
+              </div>
             </div>
           </ng-container>
         </ng-container>
 
-        <button ecPrimaryButton class="bg-blue-500 mt-10"
+        <button ecButton class="bg-blue-500 mt-10 w-1/4"
                 (click)="addBlock()">
           {{'document.block.add' | translate}}
         </button>
