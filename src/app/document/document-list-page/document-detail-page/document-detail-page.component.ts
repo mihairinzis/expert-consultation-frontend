@@ -13,7 +13,6 @@ import {CanLeave} from "@app/core/guards/can-leave-component.guard";
 @Component({
   selector: 'ec-document-detail-page',
   templateUrl: './document-detail-page.component.html',
-  styleUrls: ['./document-detail-page.component.scss'],
   providers: [DocumentDetailPageStore, FormService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -3,8 +3,7 @@ import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'ec-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   title = 'expert-consultation';

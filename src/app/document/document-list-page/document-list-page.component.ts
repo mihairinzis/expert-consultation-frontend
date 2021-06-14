@@ -7,7 +7,6 @@ import {Document} from "@app/document/document-list-page/model/document";
 @Component({
   selector: 'ec-document-list-page',
   templateUrl: './document-list-page.component.html',
-  styleUrls: ['./document-list-page.component.scss'],
   providers: [DocumentListPageStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

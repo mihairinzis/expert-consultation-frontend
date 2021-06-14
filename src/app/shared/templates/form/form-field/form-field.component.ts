@@ -4,8 +4,7 @@ import {I18nMessage} from "@app/shared/model/i18n-message";
 
 @Component({
   selector: 'ec-form-field',
-  templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.scss'],
+  templateUrl: './form-field.component.html'
 })
 export class FormFieldComponent {
   @Input() abstractControl: AbstractControl;

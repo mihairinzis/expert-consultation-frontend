@@ -7,7 +7,6 @@ import {map} from "rxjs/operators";
 @Component({
   selector: 'ec-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss'],
   providers: [TopBarStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

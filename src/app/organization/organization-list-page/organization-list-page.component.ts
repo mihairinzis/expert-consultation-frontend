@@ -7,7 +7,6 @@ import {Page} from "@app/shared/model/page";
 @Component({
   selector: 'ec-organization-list-page',
   templateUrl: './organization-list-page.component.html',
-  styleUrls: ['./organization-list-page.component.scss'],
   providers: [OrganizationListPageStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })

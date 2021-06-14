@@ -12,7 +12,6 @@ import {CanLeave} from "@app/core/guards/can-leave-component.guard";
 @Component({
   selector: 'ec-organization-detail-page',
   templateUrl: './organization-detail-page.component.html',
-  styleUrls: ['./organization-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [OrganizationDetailPageStore, FormService]
 })
