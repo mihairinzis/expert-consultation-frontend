@@ -3,15 +3,15 @@
       *ngIf="title">{{title | translate}}
   </h1>
 
-  <div class="flex">
-    <xng-breadcrumb class="flex-grow">
+  <div class="md:flex">
+    <xng-breadcrumb class="md:flex-grow">
       <ng-container *xngBreadcrumbItem="let breadcrumb; let info = info; let first = first">
         <ng-container *ngIf="info"><i class="fa {{info}}"></i></ng-container>
         <ng-container *ngIf="!first">{{breadcrumb | translate}}</ng-container>
       </ng-container>
     </xng-breadcrumb>
 
-    <div class="flex-none w-1/5">
+    <div class="md:flex-none">
       <ng-content select="[top-right]"></ng-content>
     </div>
   </div>

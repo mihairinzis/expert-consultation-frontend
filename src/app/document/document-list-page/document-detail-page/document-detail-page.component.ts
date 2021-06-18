@@ -9,6 +9,7 @@ import {catchError, filter, take, tap} from "rxjs/operators";
 import {DocumentBlock} from "@app/document/document-list-page/model/document-block";
 import {CanLeave} from "@app/core/guards/can-leave-component.guard";
 import {Editor, Toolbar} from "ngx-editor";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   selector: 'ec-document-detail-page',
@@ -39,7 +40,8 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
   constructor(private documentDetailPageStore: DocumentDetailPageStore,
               public formService: FormService,
               private formBuilder: FormBuilder,
-              private routingService: RoutingService) {
+              private routingService: RoutingService,
+              private sanitizer: DomSanitizer) {
     this.formService.init(this.form);
 
     this.document$ = this.documentDetailPageStore.document$
@@ -84,14 +86,31 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
   addBlock(block?: DocumentBlock): void {
     this.blocks.push(this.formBuilder.group({
       id: [block?.id || ''],
-      content: [block?.content || ''],
+      content: [block?.content || '<p></p>'],
       index: [block?.index || this.blocks.length]
     }));
     this.editableBlockIndex = this.blocks.length - 1;
   }
 
+  blockContentChanged(blockIndex: number, content: string): void {
+    this.blocks.at(blockIndex)?.get('content')?.patchValue(content);
+  }
+
+  safeBlockContent(blockIndex: number): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(
+      this.blockContent(blockIndex).replaceAll('<p></p>', '<p>&nbsp;</p>')
+    );
+  }
+
+  blockContent(blockIndex: number): string {
+    return this.blocks.at(blockIndex)?.get('content')?.value;
+  }
+
+  removeBlock(blockIndex: number) {
+    this.blocks.removeAt(blockIndex);
+  }
+
   get blocks(): FormArray {
     return this.form.get('blocks') as FormArray;
   }
-
 }

@@ -10,7 +10,7 @@ export class SectionDirective implements OnInit {
 
   ngOnInit(): void {
     this.el.nativeElement.classList.add(
-      'border', 'border-gray-400', 'rounded-lg', 'm-5', 'p-12'
+      'border', 'border-gray-400', 'rounded-lg', 'm-2', 'md:m-3', 'p-6', 'md:p-8'
     );
   }
 }
