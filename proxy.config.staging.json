@@ -1,0 +1,8 @@
+﻿{
+  "/api": {
+    "target": "https://expert.heroesof.tech/",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
