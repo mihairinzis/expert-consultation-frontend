@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {distinctUntilChanged, filter, map, shareReplay, tap} from 'rxjs/operators';
+import {distinctUntilChanged, filter, map, tap} from 'rxjs/operators';
 import {
   ActivatedRoute,
   ActivatedRouteSnapshot,

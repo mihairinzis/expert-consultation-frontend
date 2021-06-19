@@ -12,7 +12,7 @@ import {HotToastModule} from "@ngneat/hot-toast";
 import {HttpEventInterceptor} from "@app/core/interceptors/http-event-interceptor";
 import {ConfirmDialogComponent} from '@app/shared/components/confirm-dialog/confirm-dialog.component';
 
-export function HttpLoaderFactory(httpClient: HttpClient) {
+export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(httpClient);
 }
 

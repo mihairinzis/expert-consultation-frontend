@@ -1,7 +1,7 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {catchError, filter, tap} from 'rxjs/operators';
-import {Injectable, Type} from '@angular/core';
+import {catchError, tap} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
 import {RoutingService} from "@app/core/services/routing.service";
 import {CreateHotToastRef, HotToastService} from "@ngneat/hot-toast";
 import {TranslateService} from "@ngx-translate/core";

@@ -10,11 +10,12 @@ import {BreadcrumbModule} from "xng-breadcrumb";
 import {FormComponent} from './templates/form/form.component';
 import {FormFieldComponent} from './templates/form/form-field/form-field.component';
 import {FormInputDirective} from './directives/form-input.directive';
-import {SectionDirective} from "@app/shared/directives/section";
 import {ButtonDirective} from "@app/shared/directives/button.directive";
 import {DialogModule} from "@ngneat/dialog";
 import {ConfirmDialogComponent} from "@components/confirm-dialog/confirm-dialog.component";
 import {NgxEditorModule} from "ngx-editor";
+import {SectionComponent} from './templates/section/section.component';
+import {PaginatorComponent} from '@components/paginator/paginator.component';
 
 const modules = [
   CommonModule,
@@ -32,13 +33,14 @@ const declarations = [
   TopBarComponent,
   PageComponent,
   FormComponent,
+  SectionComponent,
   FormFieldComponent,
-  ConfirmDialogComponent
+  ConfirmDialogComponent,
+  PaginatorComponent
 ];
 
 const directives = [
   FormInputDirective,
-  SectionDirective,
   ButtonDirective
 ];
 

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormService} from "@app/shared/templates/form/form.service";
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
@@ -17,7 +17,7 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
   providers: [DocumentDetailPageStore, FormService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocumentDetailPageComponent implements OnInit, CanLeave {
+export class DocumentDetailPageComponent implements OnInit, OnDestroy, CanLeave {
 
   documentId: string | number | null;
   document$: Observable<Document>;
@@ -26,7 +26,7 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
   toolbar: Toolbar = [
     ['bold', 'italic'],
     ['underline', 'strike'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    [{heading: ['h1', 'h2', 'h3', 'h4']}],
     ['text_color', 'background_color'],
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
@@ -106,8 +106,11 @@ export class DocumentDetailPageComponent implements OnInit, CanLeave {
     return this.blocks.at(blockIndex)?.get('content')?.value;
   }
 
-  removeBlock(blockIndex: number) {
+  removeBlock(blockIndex: number): void {
     this.blocks.removeAt(blockIndex);
+    if (this.editableBlockIndex > this.blocks.length - 1) {
+      this.editableBlockIndex = this.blocks.length - 1;
+    }
   }
 
   get blocks(): FormArray {

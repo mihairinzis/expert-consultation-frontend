@@ -1,16 +1,14 @@
-<div ecSection>
-  <ng-content></ng-content>
+<ng-content></ng-content>
 
-  <div class="md:flex md:justify-end"
-       *ngIf="formService.editable">
-    <h1 ecButton type="secondary" class="text-center w-full"
-        (click)="discard.emit()">
-      {{discardLabel || 'common.cancel' | translate}}
-    </h1>
-    <button ecButton class="bg-green-500 w-full"
-            [disabled]="(formService.saveEnabled$ | async) === false"
-            (click)="formService.untouchForm(); save.emit()">
-      {{saveLabel || 'common.save' | translate}}
-    </button>
-  </div>
+<div class="md:flex md:justify-end md:space-x-1"
+     *ngIf="formService.editable">
+  <h3 ecButton type="secondary" class="text-center w-full md:w-auto"
+      (click)="discard.emit()">
+    {{discardLabel || 'common.cancel' | translate}}
+  </h3>
+  <button ecButton class="w-full md:w-auto"
+          [disabled]="(formService.saveEnabled$ | async) === false"
+          (click)="formService.untouchForm(); save.emit()">
+    {{saveLabel || 'common.save' | translate}}
+  </button>
 </div>

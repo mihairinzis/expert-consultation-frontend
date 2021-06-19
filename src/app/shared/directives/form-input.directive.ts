@@ -13,11 +13,11 @@ export class FormInputDirective implements OnInit, OnChanges {
   ngOnInit(): void {
     this.el.nativeElement.classList.add(
       'w-full', 'h-10', 'px-3', 'text-base', 'placeholder-gray-600',
-      'border', 'rounded-lg', 'focus:shadow-outline'
+      'border', 'rounded-lg', 'focus:shadow-outline', 'font-light', 'placeholder-opacity-75'
     );
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.hasErrors && this.isTouched) {
       this.el.nativeElement.classList.add('border-red-700');
     } else {

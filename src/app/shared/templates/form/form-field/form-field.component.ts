@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AbstractControl, FormControl} from "@angular/forms";
 import {I18nMessage} from "@app/shared/model/i18n-message";
 
@@ -11,6 +11,7 @@ export class FormFieldComponent {
   @Input() errorMessages: {[key: string] : I18nMessage | string};
   @Input() controlType: string;
   @Input() label: string;
+  @Input() placeholder: string;
 
   get control(): FormControl {
     return this.abstractControl as FormControl;

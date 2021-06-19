@@ -21,4 +21,8 @@ export class DocumentListPageComponent {
   onSearchChange($event: Event): void {
     this.documentListPageStore.titleFilter$.next(($event.target as any)?.value);
   }
+
+  onPageChanged(newPage: number): void {
+    this.documentListPageStore.newPageIndex$.next(newPage);
+  }
 }

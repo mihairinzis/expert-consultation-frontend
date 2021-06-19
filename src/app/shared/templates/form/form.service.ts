@@ -26,7 +26,7 @@ export class FormService {
 
   resetForm(resetValue?: any): void {
     if (resetValue) {
-      this.form?.patchValue(resetValue);
+      this.form?.reset(resetValue);
     }
     this.untouchForm();
   }

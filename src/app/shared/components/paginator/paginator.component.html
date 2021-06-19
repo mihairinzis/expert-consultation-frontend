@@ -1,0 +1,27 @@
+<div *ngIf="totalPages > 1" class="my-12 flex justify-items-center text-gray-700">
+  <div (click)="pageNumberChanged.emit(pageNumber - 1)"
+       class="h-12 w-12 md:w-40 mr-1 cursor-pointer">
+    <div *ngIf="pageNumber > 1" class="flex">
+      <i class="fa fa-arrow-left mr-1 pt-1"></i>
+      <span class="hidden md:flex">{{'paginator.previous' | translate}}</span>
+    </div>
+  </div>
+  <div class="flex flex-grow justify-center space-x-4">
+    <div *ngFor="let page of pages">
+      <span *ngIf="page === Infinity">...</span>
+      <span *ngIf="page !== Infinity"
+            [class.font-bold]="page === pageNumber"
+            (click)="pageNumberChanged.emit(page)"
+            class="cursor-pointer">
+        {{page}}
+      </span>
+    </div>
+  </div>
+  <div (click)="pageNumberChanged.emit(pageNumber + 1)"
+       class="h-12 w-12 md:w-40 ml-1 flex justify-self-end cursor-pointer">
+    <div *ngIf="pageNumber < totalPages" class="flex">
+      <span class="hidden md:flex">{{'paginator.next' | translate}}</span>
+      <i class="fa fa-arrow-right ml-1 pt-1"></i>
+    </div>
+  </div>
+</div>

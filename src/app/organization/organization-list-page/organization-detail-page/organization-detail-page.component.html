@@ -1,5 +1,7 @@
 <ec-page>
-  <div class="md:w-4/5 lg:w-3/5">
+  <ec-section title="organization.title"
+              subTitle="organization.subTitle"
+              class="md:w-2/5">
     <ec-form
       *ngIf="organization$ | async as organization"
       (save)="saveOrganization()"
@@ -28,5 +30,5 @@
         </ec-form-field>
       </form>
     </ec-form>
-  </div>
+  </ec-section>
 </ec-page>
