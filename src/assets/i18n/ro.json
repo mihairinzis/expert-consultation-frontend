@@ -28,13 +28,17 @@
   },
   "document": {
     "label": "document",
+    "title": "Informații document",
+    "subTitle": "Adaugă detalii despre document",
     "breadcrumb": {
       "list": "Mangement documente",
       "detail": "Detalii document",
       "new": "Adaugă document"
     },
     "block": {
-      "add": "+ Adaugă secțiune"
+      "add": "+ Adaugă secțiune",
+      "title": "Document draft",
+      "subTitle": "Creează un nou document cu ajutorul opțiunilor disponibile"
     },
     "field": {
       "title": "Titlu"
@@ -43,6 +47,8 @@
   },
   "organization": {
     "label": "organizație",
+    "title": "Informații organizație",
+    "subTitle": "Adaugă detalii despre organizație",
     "breadcrumb": {
       "list": "Mangement organizații",
       "detail": "Detalii organizație",
@@ -60,6 +66,10 @@
       "category.TEAM": "Echipă"
     },
     "saved": "Organizația a fost salvată cu succes."
+  },
+  "paginator": {
+    "next": "Pagina următoare",
+    "previous": "Pagina anterioară"
   },
   "validation.Resource.not.found": "Resursa nu a fost găsită.",
   "register": {

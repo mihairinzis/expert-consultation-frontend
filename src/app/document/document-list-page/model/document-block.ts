@@ -1,5 +1,5 @@
 export class DocumentBlock {
-  id: string = '';
-  content: string = '';
-  index: number = 0;
+  id: string;
+  content: string;
+  index: number;
 }

@@ -1,15 +1,18 @@
 <ng-container [ngSwitch]="controlType">
-  <div class="mb-4 text-gray-700">
-    <label class="block mb-1" *ngIf="label">{{label | translate}}</label>
+  <div class="mb-4 md:mb-6 text-gray-700">
+    <label class="block mb-1 font-medium" *ngIf="label">{{label | translate}}</label>
 
     <ng-container *ngSwitchCase="'custom'">
         <ng-content></ng-content>
     </ng-container>
 
     <ng-container *ngSwitchDefault>
-      <input ecFormInput [hasErrors]="!!control.errors" [isTouched]="control.touched"
+      <input ecFormInput
+             [hasErrors]="!!control.errors"
+             [isTouched]="control.touched"
              [type]="controlType"
-             [formControl]="control">
+             [formControl]="control"
+             [placeholder]="placeholder || '' | translate">
     </ng-container>
 
     <ng-container *ngIf="control.errors && control.touched"

@@ -1,41 +1,50 @@
 <ec-page>
   <form [formGroup]="form">
-    <div class="md:flex">
-      <ec-form class="lg:w-1/4"
-               *ngIf="document$ | async as document"
-               (discard)="resetForm(document)"
-               (save)="saveDocument()">
-        <ec-form-field [abstractControl]="form.controls.title" controlType="text"
-                       label="document.field.title"></ec-form-field>
-      </ec-form>
+    <div class="lg:flex">
+      <div class="lg:w-1/4">
+        <ec-section title="document.title"
+                    subTitle="document.subTitle">
+          <ec-form *ngIf="document$ | async as document"
+                   (discard)="resetForm(document)"
+                   (save)="saveDocument()">
+            <ec-form-field [abstractControl]="form.controls.title" controlType="text"
+                           label="document.field.title"></ec-form-field>
+          </ec-form>
+        </ec-section>
+      </div>
 
-      <div ecSection class="lg:w-3/4">
-        <div formArrayName="blocks">
-          <ng-container *ngFor="let block of blocks.controls; let i=index">
-            <div class="group" *ngIf="editableBlockIndex !== i">
-              <div class="absolute z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in">
-                <i class="fa fa-pencil mr-1 cursor-pointer" (click)="editableBlockIndex = i"></i>
-                <i class="fa fa-trash mr-2 cursor-pointer" (click)="removeBlock(i)"></i>
+      <div class="lg:w-3/4">
+        <ec-section title="document.block.title"
+                    subTitle="document.block.subTitle">
+          <div formArrayName="blocks">
+            <ng-container *ngFor="let block of blocks.controls; let i=index">
+              <div class="rounded bg-gray-50 mb-5 p-1">
+                <div class="flex justify-end mb-1">
+                  <i *ngIf="editableBlockIndex !== i" class="fa fa-pencil mr-1 cursor-pointer"
+                     (click)="editableBlockIndex = i">
+                  </i>
+                  <i class="fa fa-trash mr-2 cursor-pointer" (click)="removeBlock(i)"></i>
+                </div>
+                <div *ngIf="editableBlockIndex !== i" class="break-all" [innerHTML]="safeBlockContent(i)"></div>
+                <div *ngIf="editableBlockIndex === i" class="NgxEditor__Wrapper">
+                  <ngx-editor-menu [editor]="editor"
+                                   [toolbar]="toolbar">
+                  </ngx-editor-menu>
+                  <ngx-editor [editor]="editor"
+                              [ngModel]="block.get('content')?.value" [ngModelOptions]="{standalone: true}"
+                              (ngModelChange)="blockContentChanged(i, $event)"
+                              placeholder="Scrie textul...">
+                  </ngx-editor>
               </div>
-              <div class="break-all group-hover:opacity-30" [innerHTML]="safeBlockContent(i)"></div>
-            </div>
-            <div *ngIf="editableBlockIndex === i" class="mt-5 mb-5 NgxEditor__Wrapper">
-              <ngx-editor-menu [editor]="editor"
-                               [toolbar]="toolbar">
-              </ngx-editor-menu>
-              <ngx-editor [editor]="editor"
-                          [ngModel]="block.get('content')?.value" [ngModelOptions]="{standalone: true}"
-                          (ngModelChange)="blockContentChanged(i, $event)"
-                          placeholder="Scrie textul...">
-              </ngx-editor>
-            </div>
-          </ng-container>
-        </div>
+              </div>
+            </ng-container>
+          </div>
 
-        <button ecButton class="bg-blue-500 w-full mt-4 md:w-1/3 lg:w-1/4"
-                (click)="addBlock()">
-          {{'document.block.add' | translate}}
-        </button>
+          <button ecButton class="w-full mt-4 md:w-1/3 lg:w-1/4"
+                  (click)="addBlock()">
+            {{'document.block.add' | translate}}
+          </button>
+        </ec-section>
       </div>
     </div>
   </form>

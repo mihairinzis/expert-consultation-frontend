@@ -17,7 +17,11 @@ export class OrganizationListPageComponent {
     this.organizations$ = this.organizationListPageStore.organizations$;
   }
 
-  onSearchChange($event: Event) {
+  onSearchChange($event: Event): void {
     this.organizationListPageStore.nameFilter$.next(($event.target as any)?.value);
+  }
+
+  onPageChanged(newPage: number): void {
+    this.organizationListPageStore.newPageIndex$.next(newPage);
   }
 }

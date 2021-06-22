@@ -5,11 +5,11 @@
       <p class="text-sm text-gray-500 px-8">{{ref.data?.message | translate}}</p>
     </div>
     <div class="p-3 mt-2 text-center space-x-4 md:block">
-      <h1 ecButton type="secondary" class="inline"
+      <h3 ecButton type="secondary" class="inline"
           (click)="ref.close()">
         {{'button.cancel' | translate}}
-      </h1>
-      <button ecButton class="bg-green-500 ml-2 px-5"
+      </h3>
+      <button ecButton class="ml-2 px-5"
               [dialogClose]="true">
         {{'button.confirm' | translate}}
       </button>

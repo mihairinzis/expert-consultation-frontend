@@ -22,13 +22,10 @@ export class DocumentListPageStore {
 
   private documents(): Observable<Page<Document>> {
     return combineLatest([
-      this.newPageIndex$.pipe(startWith(0)),
+      this.newPageIndex$.pipe(startWith(1)),
       this.newPageSize$.pipe(startWith(20)),
       this.newSort$.pipe(startWith('id,desc')),
-      this.titleFilter$.pipe(
-        startWith(''),
-        debounceTime(500)
-      )
+      this.titleFilter$.pipe(startWith(''), debounceTime(500))
     ])
       .pipe(
         map(([page, size, sort, title]) => ({page, size, sort, title})),
